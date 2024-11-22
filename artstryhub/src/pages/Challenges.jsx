@@ -1,4 +1,6 @@
 import React from "react";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Challenges = () => {
   const challenges = [
@@ -7,7 +9,8 @@ const Challenges = () => {
   ];
 
   return (
-    <div className="container mx-auto py-16 px-6">
+    <div className="bg-gray-100">
+      <Navbar/>
       <h1 className="text-4xl font-bold text-center mb-8">Challenges</h1>
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {challenges.map((challenge, index) => (
@@ -22,6 +25,7 @@ const Challenges = () => {
           </li>
         ))}
       </ul>
+      <Footer/>
     </div>
   );
 };

@@ -19,7 +19,6 @@ const Navbar = () => {
           ArtistryHub
         </Link>
         <ul className={`md:flex gap-6 items-center ${isOpen ? "block" : "hidden"} md:block`}>
-          <li><Link to="/" className="hover:text-gray-400">Home</Link></li>
           <li><Link to="/about-us" className="hover:text-gray-400">About</Link></li>
           <li><Link to="/challenges" className="hover:text-gray-400">Challenges</Link></li>
           <li><Link to="/events" className="hover:text-gray-400">Events</Link></li>

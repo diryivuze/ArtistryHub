@@ -1,8 +1,11 @@
 import React from "react";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const About = () => {
   return (
-    <div className="container mx-auto py-16 px-6">
+    <div className="bg-gray-100">
+      <Navbar/>
       <h1 className="text-4xl font-bold text-center mb-8">About Us</h1>
       <p className="text-gray-700 text-lg text-center">
         At ArtistryHub, we are dedicated to connecting artists and art enthusiasts
@@ -21,6 +24,7 @@ const About = () => {
         </div>
         {/* Add more team members here */}
       </div>
+      <Footer/>
     </div>
   );
 };
