@@ -66,7 +66,7 @@ const Events = () => {
         transition={{ duration: 0.6 }}
         className="container mx-auto px-4 py-12"
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-6">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mt-10 mb-6">
           Upcoming Events
         </h1>
 

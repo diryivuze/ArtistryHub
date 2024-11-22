@@ -44,6 +44,7 @@ const Challenges = () => {
         "3rd Place: $200"
       ]
     },
+    
     {
       id: 2,
       title: "Photography Challenge",
@@ -140,7 +141,7 @@ const Challenges = () => {
           </div>
 
           <div className="space-y-3">
-            <div className="flex items-center space-x-4 text-sm text-gray-600">
+            <div className="flex flex-wrap items-center space-x-4 text-sm text-gray-600">
               <div className="flex items-center">
                 <Calendar size={16} className="mr-1" />
                 <span>{challenge.deadline}</span>
@@ -151,7 +152,7 @@ const Challenges = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap items-center space-x-2">
               <span className={`px-2 py-1 rounded text-xs font-medium ${getDifficultyColor(challenge.difficulty)}`}>
                 {challenge.difficulty}
               </span>
@@ -227,13 +228,13 @@ const Challenges = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 overflow-hidden">
       <Navbar/>
       
       {/* Hero Section */}
       <div className="bg-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 mt-6">
             Art Challenges
           </h1>
           <p className="text-xl text-center max-w-3xl mx-auto text-blue-100">
@@ -261,7 +262,7 @@ const Challenges = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Categories</option>
                 {categories.map((category, index) => (
@@ -270,11 +271,11 @@ const Challenges = () => {
               </select>
 
               <div className="flex bg-gray-100 rounded-lg p-1">
-                {['all', 'active', 'upcoming'].map((filter) => (
+                {['all', 'active', 'upcoming'].map(filter => (
                   <button
                     key={filter}
                     onClick={() => setActiveFilter(filter)}
-                    className={`px-4 py-1 rounded-md text-sm font-medium capitalize ${
+                    className={`px-2 py-1 rounded-md text-sm font-medium capitalize ${
                       activeFilter === filter
                         ? 'bg-white text-blue-600 shadow-sm'
                         : 'text-gray-600 hover:text-gray-900'
@@ -297,7 +298,9 @@ const Challenges = () => {
 
         {filteredChallenges.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No challenges found matching your criteria</p>
+            <p className="text-gray-600 text-lg">
+              No challenges found matching your criteria.
+            </p>
           </div>
         )}
       </div>
