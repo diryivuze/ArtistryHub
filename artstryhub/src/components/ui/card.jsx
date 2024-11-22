@@ -1,9 +1,7 @@
 import React from "react";
 
 export const Card = ({ children, className }) => (
-  <div className={`bg-white shadow rounded-lg overflow-hidden ${className}`}>
-    {children}
-  </div>
+  <div className={`rounded-lg shadow-md bg-white ${className}`}>{children}</div>
 );
 
 export const CardHeader = ({ children }) => (
@@ -14,10 +12,14 @@ export const CardContent = ({ children }) => (
   <div className="p-4">{children}</div>
 );
 
-export const CardTitle = ({ children }) => (
-  <h3 className="text-lg font-bold">{children}</h3>
+export const CardFooter = ({ children }) => (
+  <div className="p-4 border-t">{children}</div>
+);
+
+export const CardTitle = ({ children, className }) => (
+  <h2 className={`font-bold ${className}`}>{children}</h2>
 );
 
 export const CardDescription = ({ children }) => (
-  <p className="text-sm text-gray-500">{children}</p>
+  <p className="text-gray-600">{children}</p>
 );
