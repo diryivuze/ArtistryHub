@@ -66,7 +66,7 @@ const Login = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-7xl bg-white rounded-2xl shadow-2xl flex overflow-hidden"
+        className="w-full max-w-5xl bg-white rounded-2xl shadow-2xl flex overflow-hidden"
       >
         {/* Left Section */}
         <motion.div
