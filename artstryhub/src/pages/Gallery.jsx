@@ -12,20 +12,18 @@ const Gallery = () => {
 
   const artworkCollections = {
     Photography: [
-      { id: 1, title: 'Urban Landscape', artist: 'Emily Chen', category: 'Photography', image: '/api/placeholder/300/200', likes: 42, comments: [] },
-      { id: 2, title: 'Cityscape Nights', artist: 'Alex Wong', category: 'Photography', image: '/api/placeholder/300/200', likes: 37, comments: [] },
+      { id: 1, title: 'Urban Landscape', artist: 'Sheilla Igiraneza', category: 'Photography', image: 'https://lightandlandscape.co/wp-content/uploads/2024/04/urban-landscape-photography-in-passing.jpg', likes: 42, comments: [] },
+      { id: 2, title: 'Cityscape Nights', artist: 'Chancelline Niyotugendana', category: 'Photography', image: 'https://img.freepik.com/premium-photo/cityscape-with-bridge-building-with-sign-that-says-bank-america_976492-37875.jpg', likes: 37, comments: [] },
     ],
     'Digital Art': [
-      { id: 3, title: 'Abstract Emotion', artist: 'Marcus Rodriguez', category: 'Digital Art', image: '/api/placeholder/300/200', likes: 55, comments: [] },
-      { id: 4, title: 'Cyber Dreams', artist: 'Sophia Lee', category: 'Digital Art', image: '/api/placeholder/300/200', likes: 48, comments: [] },
+      { id: 3, title: 'Abstract Emotion', artist: 'Loue Christian', category: 'Digital Art', image: 'https://img.freepik.com/premium-photo/abstract-digital-female-face-illustration-colorful-design-flat-style-art-head-futuristic-emotion-profile-network-mood-psychology-information-patterns-idea-creativity-concept-ai_783618-375.jpg', likes: 55, comments: [] },
+      { id: 4, title: 'Cyber Dreams', artist: 'Alain Michael', category: 'Digital Art', image: 'https://thumbs.dreamstime.com/b/illustration-cyber-punk-dream-graphic-representation-digital-art-lucid-style-330366090.jpg', likes: 48, comments: [] },
     ],
     Painting: [
-      { id: 5, title: 'Sunset Serenity', artist: 'Aria Kim', category: 'Painting', image: '/api/placeholder/300/200', likes: 61, comments: [] },
-      { id: 6, title: 'Mountain Whispers', artist: 'Diego Martinez', category: 'Painting', image: '/api/placeholder/300/200', likes: 53, comments: [] },
-    ],
+      { id: 5, title: 'Sunset Serenity', artist: 'Patrick Nayituriki', category: 'Painting', image: 'https://lagunaart.com/cdn/shop/files/BASHAR2IMG_0966_a74eeab5-91ad-4c1b-b77d-3fe410f6f993_1024x1024@2x.jpg?v=1714180645', likes: 61, comments: [] },
+   ],
     Sculpture: [
-      { id: 7, title: 'Metamorphosis', artist: 'Elena Petrova', category: 'Sculpture', image: '/api/placeholder/300/200', likes: 39, comments: [] },
-      { id: 8, title: 'Organic Forms', artist: 'Raj Patel', category: 'Sculpture', image: '/api/placeholder/300/200', likes: 44, comments: [] },
+      { id: 6, title: 'Metamorphosis', artist: 'Daniel Iryivuze', category: 'Sculpture', image: 'https://siudmak-official.com/wp-content/uploads/2023/09/metamorphosis-gold-1.jpg', likes: 39, comments: [] },
     ]
   };
 
@@ -53,7 +51,7 @@ const Gallery = () => {
   };
 
   return (
-    <div>
+    <div className='bg-gradient-to-b from-gray-50 to-gray-500 '>
       <Navbar />
       <div className="p-10">
         <motion.div
@@ -79,22 +77,6 @@ const Gallery = () => {
               className="w-full px-4 py-2 border rounded-lg pl-10"
             />
             <SearchIcon className="absolute left-3 top-3 text-gray-400" size={20} />
-          </div>
-          <div className="flex space-x-2 md:block hidden"> {/* Hide on mobile */}
-            {filters.map((filter) => (
-              <motion.button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2 rounded-full flex items-center gap-2 ${
-                  activeFilter === filter ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'
-                }`}
-              >
-                <FilterIcon size={16} />
-                {filter}
-              </motion.button>
-            ))}
           </div>
         </div>
 

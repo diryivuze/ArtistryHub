@@ -1,48 +1,59 @@
 import React, { useState } from "react";
 import Navbar from '../components/Navbar';
+import { useNavigate } from "react-router-dom";
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { Users, Palette, Trophy, Heart, Mail, ArrowRight, Github, Linkedin, Award } from 'lucide-react';
+import { Users, Palette, Trophy, Heart, Mail, ArrowRight, Linkedin, Award} from 'lucide-react';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('story');
-
+const navigate = useNavigate();
   const stats = [
-    { number: "10K+", label: "Artists", icon: Users },
-    { number: "50K+", label: "Artworks", icon: Palette },
-    { number: "100+", label: "Events", icon: Trophy },
-    { number: "25K+", label: "Community", icon: Heart },
+    { number: "5+", label: "Artists", icon: Users },
+    { number: "10+", label: "Artworks", icon: Palette },
+    { number: "2+", label: "Events", icon: Trophy },
+    { number: "3+", label: "Community", icon: Heart },
   ];
 
   const team = [
     {
-      name: "John Doe",
+      name: "Patrick Nayituriki",
       role: "Founder & CEO",
-      image: "/api/placeholder/200/200",
-      bio: "Visionary leader with 15 years in the art industry",
+      image: "https://cdn-icons-png.flaticon.com/512/56/56832.png",
+      bio: "Visionary leader with 5 years in the art industry",
       socials: {
         linkedin: "#",
-        github: "#"
+        Email: "#"
       }
     },
     {
-      name: "Jane Smith",
+      name: "Sheilla Igiraneza",
       role: "Creative Director",
-      image: "/api/placeholder/200/200",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzPRQ6LprnPzvvP-_vVO_nhSokwda8CMsnwQ&s",
       bio: "Award-winning artist and curator",
       socials: {
         linkedin: "#",
-        github: "#"
+        Email: "#"
       }
     },
     {
-      name: "Mike Johnson",
+      name: "Alain Michael",
       role: "Tech Lead",
-      image: "/api/placeholder/200/200",
+      image: "https://cdn-icons-png.flaticon.com/512/56/56832.png",
       bio: "Full-stack developer and art enthusiast",
       socials: {
         linkedin: "#",
-        github: "#"
+        Email: "#"
+      }
+    },
+    {
+      name: "Vanessa  Uwonkunda",
+      role: "Operation Lead",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzPRQ6LprnPzvvP-_vVO_nhSokwda8CMsnwQ&s",
+      bio: "Events manager and operations organizer",
+      socials: {
+        linkedin: "#",
+        Email: "#"
       }
     }
   ];
@@ -57,7 +68,7 @@ const About = () => {
       >
         <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Story</h3>
         <p className="text-gray-600 leading-relaxed">
-          Founded in 2020, ArtistryHub emerged from a simple vision: to create a vibrant, 
+          Founded in 2024, ArtistryHub emerged from a simple vision: to create a vibrant, 
           inclusive space where artists and art enthusiasts could connect, collaborate, and grow together.
         </p>
         <p className="text-gray-600 leading-relaxed">
@@ -147,7 +158,7 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-400">
       <Navbar />
       
       {/* Hero Section */}
@@ -155,13 +166,13 @@ const About = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative bg-blue-600 text-white py-20"
+        className="relative bg-gradient-to-b from-blue-950 to-gray-500 text-blue-50 py-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
             Empowering Artists Worldwide
           </h1>
-          <p className="text-xl text-center max-w-3xl mx-auto text-blue-100 ">
+          <p className="text-xl text-center max-w-3xl mx-auto text-blue-50 ">
             At ArtistryHub, we are dedicated to connecting artists and art enthusiasts
             through events, challenges, and collaborations. Join us in celebrating
             creativity!
@@ -238,7 +249,7 @@ const About = () => {
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
             Meet Our Team
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <motion.div 
                 key={index}
@@ -270,10 +281,10 @@ const About = () => {
                     </motion.a>
                     <motion.a 
                       whileHover={{ scale: 1.2 }}
-                      href={member.socials.github} 
+                      href={member.socials.email} 
                       className="text-gray-400 hover:text-gray-900 transition-colors"
                     >
-                      <Github size={20} />
+                      <Mail size={20} />
                     </motion.a>
                   </div>
                 </div>
@@ -289,7 +300,7 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-20 text-center"
         >
-          <div className="bg-blue-600 text-white rounded-xl p-8 shadow-lg">
+          <div className="bg-gray-800 text-white rounded-xl p-8 shadow-lg">
             <h2 className="text-3xl font-bold mb-4">Join Our Community</h2>
             <p className="text-blue-100 mb-6">
               Have questions or want to learn more? We'd love to hear from you!
@@ -297,7 +308,8 @@ const About = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors duration-300 flex items-center mx-auto"
+              className="bg-white text-red-500 px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors duration-300 flex items-center mx-auto"
+              onClick={() => navigate("/login")}
             >
               <Mail size={20} className="mr-2" />
               Contact Us

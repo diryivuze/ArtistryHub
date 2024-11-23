@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useNavigate } from "react-router-dom";
 import { 
   Users, 
   Search, 
@@ -18,17 +19,16 @@ import {
 
 const Collaborations = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeTab, setActiveTab] = useState('find');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
-
+  const navigate = useNavigate();
   const collaborations = [
     {
       id: 1,
       title: "Comic Book Series",
       creator: {
-        name: "Sarah Chen",
-        avatar: "/api/placeholder/40/40",
+        name: "David Niyonshuti",
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmvSoqEMvs4E-TIgyfMdztZYEdKav-zok1A&s",
         rating: 4.8
       },
       description: "Looking for illustrators and writers to create a 5-issue sci-fi comic series",
@@ -38,7 +38,7 @@ const Collaborations = () => {
       skillsNeeded: ["Digital Art", "Storytelling", "Comic Design"],
       timeline: "6 months",
       compensation: "Revenue share",
-      image: "/api/placeholder/400/250",
+      image: "https://i.redd.it/gpqle5f5uwv71.jpg",
       participants: 3,
       maxParticipants: 5
     },
@@ -46,8 +46,8 @@ const Collaborations = () => {
       id: 2,
       title: "Animation Short Film",
       creator: {
-        name: "Mike Ross",
-        avatar: "/api/placeholder/40/40",
+        name: "Elvine Mugisha",
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzPRQ6LprnPzvvP-_vVO_nhSokwda8CMsnwQ&s",
         rating: 4.5
       },
       description: "Seeking animators and sound designers for a 3-minute animated short",
@@ -57,12 +57,88 @@ const Collaborations = () => {
       skillsNeeded: ["2D Animation", "Sound Design", "Character Design"],
       timeline: "4 months",
       compensation: "Fixed pay",
-      image: "/api/placeholder/400/250",
+      image: "https://www.apple.com/tv-pr/articles/2021/04/apple-original-films-and-skydance-animation-announce-exquisite-animated-short-film-blush/images/big-image/041421_Animated_Short_Film_Blush_big_image_post.jpg.og.jpg",
       participants: 2,
       maxParticipants: 4
     },
-    // Add more collaboration projects as needed
+    {
+      id: 3,
+      title: "Indie Game Development",
+      creator: {
+        name: "Loue Christian",
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmvSoqEMvs4E-TIgyfMdztZYEdKav-zok1A&s",
+        rating: 4.7
+      },
+      description: "Looking for game designers and programmers to develop a 2D puzzle game",
+      category: "Game Art",
+      status: "open",
+      requiredRoles: ["Game Designer", "Programmer", "Sound Designer"],
+      skillsNeeded: ["Unity", "Pixel Art", "Level Design"],
+      timeline: "8 months",
+      compensation: "Profit share",
+      image: "https://assetsio.gnwcdn.com/The-hidden-costs-of-indie-development.png?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp",
+      participants: 5,
+      maxParticipants: 7
+    },
+    {
+      id: 4,
+      title: "Concept Art Collection",
+      creator: {
+        name: "Raissa Mpawenayo",
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzPRQ6LprnPzvvP-_vVO_nhSokwda8CMsnwQ&s",
+        rating: 4.9
+      },
+      description: "Seeking concept artists to collaborate on a fantasy-themed art collection",
+      category: "Concept Art",
+      status: "in progress",
+      requiredRoles: ["Concept Artist", "Digital Painter"],
+      skillsNeeded: ["Concept Design", "Illustration", "Photoshop"],
+      timeline: "3 months",
+      compensation: "Hourly pay",
+      image: "https://www.conceptgallery.com/wp-content/uploads/2024/01/IMG_8400-scaled.jpg",
+      participants: 3,
+      maxParticipants: 5
+    },
+    {
+      id: 5,
+      title: "Virtual Reality Experience",
+      creator: {
+        name: "Alain Michael",
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmvSoqEMvs4E-TIgyfMdztZYEdKav-zok1A&s",
+        rating: 4.6
+      },
+      description: "Collaborating on a VR experience showcasing historical landmarks",
+      category: "Animation",
+      status: "open",
+      requiredRoles: ["3D Modeler", "VR Developer", "Animator"],
+      skillsNeeded: ["3D Modeling", "Unity", "Texturing"],
+      timeline: "6 months",
+      compensation: "Fixed pay",
+      image: "https://physicsworld.com/wp-content/uploads/2018/04/PWOPTICSMay18-ANALYSIS-VR-390641047-Shutterstock-Halfpoint-1024x682.jpg",
+      participants: 4,
+      maxParticipants: 6
+    },
+    {
+      id: 6,
+      title: "Fine Art Exhibition",
+      creator: {
+        name: "Daniel Iryivuze",
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmvSoqEMvs4E-TIgyfMdztZYEdKav-zok1A&s",
+        rating: 4.8
+      },
+      description: "Calling for painters and sculptors for a collaborative fine art exhibition",
+      category: "Fine Art",
+      status: "completed",
+      requiredRoles: ["Painter", "Sculptor", "Curator"],
+      skillsNeeded: ["Painting", "Sculpting", "Art Installation"],
+      timeline: "1 year",
+      compensation: "Exhibition sales share",
+      image: "https://cla.auburn.edu/media/ycaawios/art-exh-1-edit.png",
+      participants: 10,
+      maxParticipants: 10
+    }
   ];
+  
 
   const categories = ["All", "Illustration", "Animation", "Game Art", "Concept Art", "Comics", "Fine Art"];
   const statuses = ["All", "Open", "In Progress", "Completed"];
@@ -88,7 +164,7 @@ const Collaborations = () => {
           />
           <div className="absolute top-4 right-4">
             <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-              project.status === 'open' ? 'bg-green-500 text-white' : 'bg-blue-500 text-white'
+              project.status === 'open' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
             }`}>
               {project.status}
             </span>
@@ -126,7 +202,7 @@ const Collaborations = () => {
               {project.requiredRoles.map((role, index) => (
                 <span 
                   key={index}
-                  className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                  className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
                 >
                   {role}
                 </span>
@@ -176,22 +252,22 @@ const Collaborations = () => {
               <button
                 onClick={() => setIsInterested(!isInterested)}
                 className={`flex items-center space-x-1 ${
-                  isInterested ? 'text-blue-600' : 'text-gray-600'
-                } hover:text-blue-600 transition-colors duration-300`}
+                  isInterested ? 'text-red-600' : 'text-gray-600'
+                } hover:text-red-600 transition-colors duration-300`}
               >
                 <UserPlus size={18} />
                 <span className="text-sm font-medium">
                   {isInterested ? 'Interested' : 'Join'}
                 </span>
               </button>
-              <button className="flex items-center space-x-1 text-gray-600 hover:text-blue-600">
+              <button className="flex items-center space-x-1 text-gray-600 hover:text-red-600">
                 <MessageCircle size={18} />
                 <span className="text-sm">Contact</span>
               </button>
             </div>
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="flex items-center space-x-1 text-blue-600 hover:text-blue-700"
+              className="flex items-center space-x-1 text-red-600 hover:text-red-700"
             >
               <span className="text-sm font-medium">
                 {isExpanded ? 'Show Less' : 'Show More'}
@@ -214,12 +290,12 @@ const Collaborations = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
+      <div className="bg-gradient-to-b from-red-950 to-gray-500 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-10">
             Create Together
           </h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl text-red-100 max-w-3xl mx-auto">
             Connect with talented artists, join exciting projects, and bring creative visions to life through collaboration.
           </p>
         </div>
@@ -237,7 +313,7 @@ const Collaborations = () => {
                 placeholder="Search collaborations..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
 
@@ -245,7 +321,7 @@ const Collaborations = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value.toLowerCase())}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 {categories.map((category, index) => (
                   <option key={index} value={category.toLowerCase()}>{category}</option>
@@ -255,32 +331,13 @@ const Collaborations = () => {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value.toLowerCase())}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 {statuses.map((status, index) => (
                   <option key={index} value={status.toLowerCase()}>{status}</option>
                 ))}
               </select>
             </div>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
-            {['find', 'my projects', 'saved'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 rounded-md text-sm font-medium capitalize transition-all duration-200 ${
-                  activeTab === tab
-                    ? 'bg-white text-blue-600 shadow'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
           </div>
         </div>
 
@@ -298,8 +355,8 @@ const Collaborations = () => {
         )}
 
         {/* Create New Project CTA */}
-        <div className="mt-12 text-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300">
+        <div className="mt-12 text-center" onClick={() => navigate("/login")}>
+          <button className="bg-red-500 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300">
             Start a New Project
           </button>
         </div>

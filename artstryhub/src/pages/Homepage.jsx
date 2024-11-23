@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { 
@@ -20,11 +21,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Homepage = () => {
@@ -32,17 +28,18 @@ const Homepage = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const featuredArtistRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
-      setActiveTestimonial(prev => (prev + 1) % testimonials.length);
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
-    
+
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fadeInUp');
           }
@@ -52,7 +49,7 @@ const Homepage = () => {
     );
 
     // Observe sections for scroll animations
-    document.querySelectorAll('.animate-section').forEach(section => {
+    document.querySelectorAll('.animate-section').forEach((section) => {
       observer.observe(section);
     });
 
@@ -64,92 +61,95 @@ const Homepage = () => {
 
   const testimonials = [
     {
-      name: "Sarah Chen",
-      role: "Digital Artist",
+      name: "Chancelline Niyotugendana",
+      role: "Photography Artist",
       text: "ArtistryHub transformed my creative journey. The feedback I receive is invaluable.",
-      rating: 5
+      rating: 5,
     },
     {
-      name: "Marcus Rodriguez",
+      name: "Alain Michael",
       role: "Art Director",
       text: "The challenges push me to explore new techniques and styles. Incredible community!",
-      rating: 5
+      rating: 5,
     },
     {
-      name: "Emma Thompson",
-      role: "Illustrator",
+      name: "Loue Cauveur",
+      role: "CEO of DigioRwanda",
       text: "Found amazing mentors here who helped me grow exponentially as an artist.",
-      rating: 5
-    }
+      rating: 5,
+    },
   ];
 
   const features = [
     {
       icon: <Calendar className="h-8 w-8" />,
       title: "Creative Events",
-      description: "Join workshops, exhibitions, and networking events tailored for artists.",
+      description:
+        "Join workshops, exhibitions, and networking events tailored for artists.",
       color: "text-blue-500",
-      hoverColor: "bg-blue-50"
+      hoverColor: "bg-blue-50",
     },
     {
       icon: <Paintbrush className="h-8 w-8" />,
       title: "Artist Feedback",
-      description: "Get constructive feedback from peers and industry professionals.",
+      description:
+        "Get constructive feedback from peers and industry professionals.",
       color: "text-green-500",
-      hoverColor: "bg-green-50"
+      hoverColor: "bg-green-50",
     },
     {
       icon: <Trophy className="h-8 w-8" />,
       title: "Art Challenges",
       description: "Participate in themed challenges to showcase your skills.",
       color: "text-purple-500",
-      hoverColor: "bg-purple-50"
-    }
+      hoverColor: "bg-purple-50",
+    },
   ];
 
-  const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-400">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 text-white"
+        className="relative overflow-hidden bg-gradient-to-r from-blue-900 to-gray-950 text-white h-screen"
       >
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] opacity-10 bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('https://img.freepik.com/premium-photo/detailed-closeup-painting-within-artists39-club-unveils-meticulous-artistry-testament-skill-dedication-present-this-creative-hub_209484-19013.jpg')] opacity-40 bg-cover bg-center" />
         <div className="relative container mx-auto px-4 py-24 text-center">
-          <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <motion.h1 
+          <div
+            className={`transition-all duration-1000 transform ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
+          >
+            <motion.h1
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-6xl font-bold mb-6"
+              className="text-6xl font-bold mt-40 mb-6"
             >
               Welcome to ArtistryHub
             </motion.h1>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Your creative sanctuary for artistic growth, collaboration, and inspiration.
+              Your creative sanctuary for artistic growth, collaboration, and
+              inspiration.
             </p>
             <div className="flex gap-4 justify-center">
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-300 flex items-center gap-2"
-                onClick={() => scrollToSection('features')}
+                className="bg-white text-red-500 px-8 py-3 hover:bg-red-500 hover:text-white rounded-full font-semibold hover:bg-blue-50 transition-colors duration-300 flex items-center gap-2"
+                onClick={() => navigate("/login")}
               >
                 Get Started <ArrowRight className="h-5 w-5" />
               </motion.button>
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300"
-                onClick={() => scrollToSection('about')}
+                className="border-2 border-red-500 text-white px-8 py-3 hover:bg-red-500 hover:text-white rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300"
+                onClick={() => navigate("/about-us")}
               >
                 Learn More
               </motion.button>
@@ -160,7 +160,7 @@ const Homepage = () => {
 
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-20 animate-section">
-        <h2 className="text-3xl font-bold text-center mb-12">Why Choose ArtistryHub?</h2>
+        <h2 className="text-4xl text-blue-950 font-bold text-center mb-12">Why Choose ArtistryHub?</h2>
         <div className="grid gap-8 grid-cols-1 md:grid-cols-3">
           {features.map((feature, index) => (
             <motion.div 
@@ -202,7 +202,7 @@ const Homepage = () => {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={`/api/placeholder/400/500`}
+                  src={`https://assets.navkarartistryhub.com/paintings/impressionism-paintings/sunlit-serenity-1.jpeg`}
                   alt={`Featured Artist ${item}`}
                   className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
@@ -212,7 +212,7 @@ const Homepage = () => {
                   className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
                 >
                   <div>
-                    <h3 className="text-lg font-semibold">Artist Name {item}</h3>
+                    <h3 className="text-lg font-semibold">Art {item}</h3>
                     <p className="text-sm text-gray-300">Digital Art • Photography</p>
                   </div>
                 </motion.div>
@@ -256,7 +256,7 @@ const Homepage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16 animate-section">
+      <section className="bg-gradient-to-r from-blue-900 to-gray-800 text-white py-16 animate-section">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -270,8 +270,9 @@ const Homepage = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-300 flex items-center gap-2 mx-auto"
-            >
+              className="bg-white text-red-500 px-8 py-3 rounded-full font-semibold hover:bg-red-500 hover:text-white transition-colors duration-300 flex items-center gap-2 mx-auto"
+              onClick={() => navigate("/login")}
+           >
               Join ArtistryHub <ChevronRight className="h-5 w-5" />
             </motion.button>
           </motion.div>
@@ -285,13 +286,6 @@ const Homepage = () => {
         transition={{ duration: 0.5, delay: 0.5 }}
         className="fixed bottom-4 right-4 max-w-sm"
       >
-        <Alert>
-          <Zap className="h-4 w-4 text-yellow-500" />
-          <AlertTitle>New Features Available!</AlertTitle>
-          <AlertDescription>
-            Check out our new AI-powered art analysis tools and collaboration features.
-          </AlertDescription>
-        </Alert>
       </motion.div>
 
       <Footer />

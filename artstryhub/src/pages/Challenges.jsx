@@ -27,9 +27,9 @@ const Challenges = () => {
       title: "Digital Painting Contest",
       deadline: "Dec 10, 2024",
       category: "Digital Art",
-      prize: "$1,000",
-      participants: 234,
-      image: "/api/placeholder/400/250",
+      prize: "$500",
+      participants: 20,
+      image: "https://assets.aiimagegenerator.pro/digital-art/cbc93679-00e1-41e1-b8b7-f2d692accee4.webp",
       description: "Create a digital masterpiece that captures the essence of future cities",
       status: "active",
       difficulty: "intermediate",
@@ -39,9 +39,9 @@ const Challenges = () => {
         "Maximum 3 entries per artist"
       ],
       prizeBreakdown: [
-        "1st Place: $500",
-        "2nd Place: $300",
-        "3rd Place: $200"
+        "1st Place: $200",
+        "2nd Place: $100",
+        "3rd Place: $100"
       ]
     },
     
@@ -50,9 +50,9 @@ const Challenges = () => {
       title: "Photography Challenge",
       deadline: "Jan 20, 2025",
       category: "Photography",
-      prize: "$750",
-      participants: 156,
-      image: "/api/placeholder/400/250",
+      prize: "$800",
+      participants: 15,
+      image: "https://www.nhm.ac.uk/content/dam/nhmwww/discover/ring-necked-parakeet-uk/ring-necked-parakeet-in-flight-full-width.jpg.thumb.620.620.jpg",
       description: "Capture the beauty of urban wildlife in its natural habitat",
       status: "active",
       difficulty: "beginner",
@@ -63,7 +63,7 @@ const Challenges = () => {
       ],
       prizeBreakdown: [
         "1st Place: $400",
-        "2nd Place: $250",
+        "2nd Place: $300",
         "3rd Place: $100"
       ]
     },
@@ -72,9 +72,9 @@ const Challenges = () => {
       title: "Traditional Art showcase",
       deadline: "Feb 15, 2025",
       category: "Traditional",
-      prize: "$1,500",
-      participants: 89,
-      image: "/api/placeholder/400/250",
+      prize: "$1,000",
+      participants: 100,
+      image: "https://www.icc8.org/images/how-digital-artists-are-redefining-traditional-mediums.jpeg",
       description: "Show your mastery of traditional mediums",
       status: "upcoming",
       difficulty: "advanced",
@@ -84,8 +84,8 @@ const Challenges = () => {
         "Process documentation required"
       ],
       prizeBreakdown: [
-        "1st Place: $800",
-        "2nd Place: $500",
+        "1st Place: $500",
+        "2nd Place: $300",
         "3rd Place: $200"
       ]
     }
@@ -232,7 +232,7 @@ const Challenges = () => {
       <Navbar/>
       
       {/* Hero Section */}
-      <div className="bg-blue-600 text-white py-16">
+      <div className="bg-gradient-to-b from-blue-950 to-gray-500 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 mt-6">
             Art Challenges

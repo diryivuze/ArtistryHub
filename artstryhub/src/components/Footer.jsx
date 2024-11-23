@@ -89,7 +89,7 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition-colors duration-300 text-sm"
+                className="w-full bg-red-500 hover:bg-red-500 text-white py-2 rounded-md transition-colors duration-300 text-sm"
               >
                 Subscribe
               </button>
@@ -120,7 +120,7 @@ const Footer = () => {
         onClick={scrollToTop}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`fixed bottom-8 right-8 bg-blue-600 p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-blue-700 ${
+        className={`fixed bottom-8 right-8 bg-red-500 p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-red-500 ${
           isHovered ? 'animate-bounce' : ''
         }`}
       >

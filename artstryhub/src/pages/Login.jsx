@@ -82,7 +82,7 @@ const Login = () => {
     },
     { 
       icon: FaFacebook, 
-      color: 'text-blue-700', 
+      color: 'text-red-700', 
       name: 'Facebook' 
     },
     { 
@@ -94,15 +94,15 @@ const Login = () => {
 
   const LoginBackground = () => (
     <motion.div 
-      className="hidden md:flex w-1/2 p-8 flex-col justify-center items-center text-white bg-blue-600"
+      className="hidden md:flex w-1/2 p-8 flex-col justify-center items-center text-white bg-red-600"
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
       <img 
-        src="/api/placeholder/300/300" 
+        src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?semt=ais_hybrid" 
         alt="Login Illustration" 
-        className="mb-6 rounded-full"
+        className="rounded-full"
       />
       <h1 className="text-4xl font-bold mb-4 text-center">
         {isLogin ? "Welcome Back!" : "Join Us!"}
@@ -116,7 +116,7 @@ const Login = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsLogin(!isLogin)}
-        className="mt-6 px-6 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-current transition"
+        className="mt-6 px-6 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-red-500 transition"
       >
         {isLogin ? "Go to Signup" : "Go to Login"}
       </motion.button>
@@ -124,7 +124,7 @@ const Login = () => {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 px-4 py-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-100 to-purple-100 px-4 py-8">
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -138,13 +138,13 @@ const Login = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => navigate("/")}
-            className="absolute top-4 left-4 flex items-center text-gray-600 hover:text-blue-600 transition"
+            className="absolute top-4 left-4 flex items-center text-gray-600 hover:text-red-600 transition"
           >
             <FaArrowLeft className="mr-2" /> Back
           </motion.button>
 
-          <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
-            {isLogin ? "Login" : "Signup"}
+          <h2 className="text-3xl font-bold text-center mt-20 mb-6 text-gray-800">
+            {isLogin ? "Login to your account !" : "Create an account !"}
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -163,7 +163,7 @@ const Login = () => {
                     placeholder="Full Name"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full pl-12 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 transition"
+                    className="w-full pl-12 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 transition"
                   />
                 </motion.div>
               )}
@@ -199,7 +199,7 @@ const Login = () => {
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-4 top-3.5 text-gray-400 hover:text-blue-600"
+                className="absolute right-4 top-3.5 text-gray-400 hover:text-red-600"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -235,7 +235,7 @@ const Login = () => {
               whileTap={{ scale: 0.95 }}
               type="submit"
               className={`w-full py-3 rounded-lg text-white transition-transform transform ${
-                isLogin ? "bg-blue-600 hover:bg-blue-700" : "bg-green-600 hover:bg-green-700"
+                isLogin ? "bg-red-600 hover:bg-red-700" : "bg-red-600 hover:bg-red-700"
               }`}
             >
               {isLogin ? "Login" : "Signup"}
@@ -243,19 +243,7 @@ const Login = () => {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600 mb-4">Or continue with</p>
-            <div className="flex justify-center space-x-4">
-              {socialLoginButtons.map((btn) => (
-                <motion.button
-                  key={btn.name}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`p-3 rounded-full ${btn.color} bg-opacity-10 hover:bg-opacity-20 transition`}
-                >
-                  <btn.icon size={24} />
-                </motion.button>
-              ))}
-            </div>
+            <p className="text-gray-600 mb-4">If you forget your password click <a href='/forget' className='text-red-500'>here ! </a></p>
           </div>
 
           {isMobile && (
@@ -263,7 +251,7 @@ const Login = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsLogin(!isLogin)}
-              className="mt-6 w-full px-6 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition"
+              className="mt-6 w-full px-6 py-2 border border-red-600 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition"
             >
               {isLogin ? "Go to Signup" : "Go to Login"}
             </motion.button>

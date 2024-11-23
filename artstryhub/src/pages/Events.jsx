@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, Users, PlusCircle, Clock, Globe } from 'lucide-react';
+import { Calendar, MapPin, Users, PlusCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useNavigate } from "react-router-dom";
 
 const eventData = [
   {
@@ -16,18 +17,18 @@ const eventData = [
     description: 'Learn advanced digital art techniques from industry professionals. Includes live demonstrations and Q&A.',
     attendees: 100,
     type: 'Online',
-    imageUrl: '/api/placeholder/400/250?text=Digital+Art',
+    imageUrl: 'https://joelartista.com/wp-content/uploads/2022/12/uganda-bidibidi-low-res-32.jpg',
   },
   {
     id: 3,
     title: 'Urban Sketching Expedition',
     date: 'Feb 10, 2025',
     time: '9:00 AM - 12:00 PM',
-    location: 'City Downtown Art District',
+    location: 'ArtistryHub Main Office',
     description: 'Explore the city through art. Bring your sketchbooks and capture urban landscapes.',
     attendees: 30,
     type: 'In-Person',
-    imageUrl: '/api/placeholder/400/250?text=Urban+Sketching',
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThse4El92lDy0Uh-esVUE4cZLuwoUGL3ptmg&s',
   },
   {
     id: 4,
@@ -38,26 +39,22 @@ const eventData = [
     description: 'Cutting-edge discussions on AI role in artistic creation and design.',
     attendees: 75,
     type: 'Hybrid',
-    imageUrl: '/api/placeholder/400/250?text=AI+Arts',
+    imageUrl: 'https://richlyafrican.org/wp-content/uploads/2023/11/Why-AI-Must-Begin-to-Learn-About-Africa.png',
   },
 ];
 
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [form, setForm] = useState({ name: '', email: '' });
-
+  const navigate = useNavigate();
   const handleRegister = () => {
-    if (form.name && form.email) {
-      alert(`You have successfully registered for ${selectedEvent.title}!`);
-      setForm({ name: '', email: '' });
-      setSelectedEvent(null);
-    } else {
-      alert('Please fill out all fields.');
-    }
+    alert(`Thank you, ${form.name || 'Guest'}! You have successfully registered for ${selectedEvent?.title || 'the event'}.`);
+    setForm({ name: '', email: '' });
+    setSelectedEvent(null);
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gradient-to-b from-gray-50 to-gray-500 min-h-screen">
       <Navbar />
 
       <motion.div
@@ -83,8 +80,6 @@ const Events = () => {
           {eventData.map((event) => (
             <motion.div
               key={event.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               className="transition-transform"
             >
               <Dialog>
@@ -128,42 +123,12 @@ const Events = () => {
                         <Users className="mr-2 text-green-500" />
                         {event.attendees} Attending
                       </div>
+                      <div onClick={() => navigate("/login")}>
                       <PlusCircle className="text-purple-500" />
+                      </div>
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl">{selectedEvent?.title}</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <p>📅 {selectedEvent?.date}</p>
-                    <p>🕒 {selectedEvent?.time}</p>
-                    <p>📍 {selectedEvent?.location}</p>
-                    <p>🌐 Event Type: {selectedEvent?.type}</p>
-                    <p className="text-gray-600">{selectedEvent?.description}</p>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className="w-full border border-gray-300 px-4 py-2 rounded mb-2"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-                    <input
-                      type="email"
-                      placeholder="Your Email"
-                      className="w-full border border-gray-300 px-4 py-2 rounded"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    />
-                    <button
-                      className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
-                      onClick={handleRegister}
-                    >
-                      Register for Event
-                    </button>
-                  </div>
-                </DialogContent>
               </Dialog>
             </motion.div>
           ))}

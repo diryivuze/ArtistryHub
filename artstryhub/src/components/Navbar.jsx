@@ -19,12 +19,12 @@ const Navbar = () => {
 
   const NavLinks = () => (
     <>
-      <li><Link to="/about-us" className="hover:text-gray-400 flex items-center gap-2"><FaUser /> About</Link></li>
-      <li><Link to="/challenges" className="hover:text-gray-400 flex items-center gap-2"><FaCalendar /> Challenges</Link></li>
-      <li><Link to="/events" className="hover:text-gray-400 flex items-center gap-2"><FaCalendar /> Events</Link></li>
-      <li><Link to="/collaborations" className="hover:text-gray-400 flex items-center gap-2"><FaUsers /> Collaborations</Link></li>
-      <li><Link to="/gallery" className="hover:text-gray-400 flex items-center gap-2"><FaImages /> Gallery</Link></li>
-      <li><Link to="/login" className="hover:text-gray-400 flex items-center gap-2"><FaUserCircle /> Login</Link></li>
+      <li><Link to="/about-us" className="hover:text-red-500 flex items-center gap-2"><FaUser /> About</Link></li>
+      <li><Link to="/challenges" className="hover:text-red-500 flex items-center gap-2"><FaCalendar /> Challenges</Link></li>
+      <li><Link to="/events" className="hover:text-red-500 flex items-center gap-2"><FaCalendar /> Events</Link></li>
+      <li><Link to="/collaborations" className="hover:text-red-500 flex items-center gap-2"><FaUsers /> Collaborations</Link></li>
+      <li><Link to="/gallery" className="hover:text-red-500 flex items-center gap-2"><FaImages /> Gallery</Link></li>
+      <li><Link to="/login" className="hover:text-red-500 flex items-center gap-2"><FaUserCircle /> Login</Link></li>
     </>
   );
 
@@ -66,13 +66,8 @@ const Navbar = () => {
   return (
     <header className="bg-gray-900 text-white shadow-lg fixed top-0 left-0 right-0 z-50">
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-        <Link to="/" className="text-xl font-bold flex items-center gap-2">
-          <img
-            src="/api/placeholder/40/40"
-            alt="Logo"
-            className="w-8 h-8 rounded-full"
-          />
-          ArtistryHub
+        <Link to="/" className="text-3xl font-bold flex items-center">
+          <span className="text-red-500 font-script ">Artistry</span>Hub
         </Link>
         <ul className="md:flex gap-6 items-center">
           <NavLinks />

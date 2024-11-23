@@ -7,7 +7,8 @@ import Events from "./pages/Events";
 import Collaborations from "./pages/Collaborations";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Forget from "./pages/forget";
+
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
         <Route path="/collaborations" element={<Collaborations />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/forget" element={<Forget />} />
       </Routes>
     </Router>
   );
