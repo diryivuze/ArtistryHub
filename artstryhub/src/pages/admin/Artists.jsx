@@ -29,10 +29,18 @@ const AdminArtists = () => {
         closeSidebar={() => setIsSidebarOpen(false)}
       />
       
-      <DashboardNav userRole={userRole} /> {/* Pass 'userRole' consistently */}
-      
-      <h1 className="text-2xl font-bold">Manage Artists</h1>
-      <div>Manage user profiles and artworks.</div>
+      {/* Dashboard Navigation (Mobile Responsive) */}
+      <div className="flex-1 flex flex-col">
+        <DashboardNav 
+          userRole={userRole} 
+          openSidebar={() => setIsSidebarOpen(true)} // Add sidebar toggle function
+        /> {/* Pass 'userRole' consistently */}
+
+        {/* Main Content Area */}
+        <div className="p-4 md:p-8">
+          <h1 className="text-2xl font-bold">Manage Artists</h1>
+        </div>
+      </div>
     </div>
   );
 };

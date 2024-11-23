@@ -1,12 +1,13 @@
 // src/pages/Admin/Mentorship.jsx
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // Import useState
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Sidebar from '../../components/Sidebar';
 import DashboardNav from '../../components/DashboardNav';
-import { useNavigate } from 'react-router-dom'; // Added the missing import
 
 const AdminMentorship = () => {
   const [isCollapsed, setIsCollapsed] = useState(false); // Sidebar state (collapsed or expanded)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar toggle
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // Profile menu toggle
   const userRole = 'Admin'; // Example role
   const navigate = useNavigate(); // Navigation hook
 
@@ -27,12 +28,18 @@ const AdminMentorship = () => {
         isSidebarOpen={isSidebarOpen}
         closeSidebar={() => setIsSidebarOpen(false)}
       />
-      <DashboardNav userRole={userRole} />
+      
+      {/* Dashboard Navigation (Mobile Responsive) */}
+      <div className="flex-1 flex flex-col">
+        <DashboardNav 
+          userRole={userRole} 
+          openSidebar={() => setIsSidebarOpen(true)} // Add sidebar toggle function
+        /> {/* Pass 'userRole' consistently */}
 
-      <div className="flex-1 p-6 bg-gray-50">
-        <h1 className="text-2xl font-bold mb-4">Mentorship Requests</h1>
-        <div>View and manage mentorship requests.</div>
-        {/* You can display mentorship data here once fetched */}
+        {/* Main Content Area */}
+        <div className="p-4 md:p-8">
+          <h1 className="text-2xl font-bold">Manage Mentorship</h1>
+        </div>
       </div>
     </div>
   );

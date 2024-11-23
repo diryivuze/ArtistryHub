@@ -81,7 +81,7 @@ const Sidebar = ({userRole}) => {
         </div>
         {!isCollapsed && (
           <div className="text-center">
-            <h3 className="font-semibold">John Doe</h3>
+            <h3 className="font-semibold">Patrick Nayituriki</h3>
             <p className="text-xs text-gray-400">{userRole.charAt(0).toUpperCase() + userRole.slice(1)}</p>
           </div>
         )}
