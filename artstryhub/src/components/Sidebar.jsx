@@ -75,7 +75,7 @@ const Sidebar = ({userRole}) => {
       {/* Profile Section */}
       <div className={`p-4 ${isCollapsed ? 'items-center' : ''} flex flex-col gap-2`}>
         <div className="flex items-center justify-center">
-          <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
             <UserCircle size={32} />
           </div>
         </div>
@@ -86,17 +86,6 @@ const Sidebar = ({userRole}) => {
           </div>
         )}
       </div>
-
-      {/* Search Bar */}
-      {!isCollapsed && (
-        <div className="px-4 py-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full px-3 py-2 rounded bg-gray-800 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500"
-          />
-        </div>
-      )}
 
       {/* Navigation Menu */}
       <div className="flex-grow overflow-y-auto">
@@ -117,8 +106,8 @@ const Sidebar = ({userRole}) => {
                       : 'text-gray-300 hover:bg-gray-800'
                   } transition-colors relative group`}
                 >
-                  <item.icon size={20} />
-                  {(!isCollapsed || isHovered) && (
+                  <item.icon size={25} />
+                  {(!isCollapsed) && (
                     <span className="transition-opacity duration-200">
                       {item.title}
                     </span>
@@ -140,8 +129,8 @@ const Sidebar = ({userRole}) => {
       {/* Logout Section */}
       <div className="p-4 border-t border-gray-800">
         <button className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 p-2 rounded-lg transition-colors">
-          <LogOut size={20} />
-          {(!isCollapsed || isHovered) && <span>Logout</span>}
+          <LogOut size={25} />
+          {(!isCollapsed ) && <span>Logout</span>}
         </button>
       </div>
     </motion.div>

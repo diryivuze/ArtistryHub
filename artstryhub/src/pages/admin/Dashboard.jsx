@@ -1,4 +1,3 @@
-// src/pages/Admin/Dashboard.jsx
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
 import { UserCircle } from 'lucide-react'; // Only import what's used
@@ -9,7 +8,7 @@ const AdminDashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false); // Sidebar state (collapsed or expanded)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar toggle
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // Profile menu toggle
-  const userRole = 'Admin'; // Example role
+  const userRole = 'admin'; // Example role
   const navigate = useNavigate(); // Navigation hook
 
   return (
@@ -32,10 +31,12 @@ const AdminDashboard = () => {
 
       {/* Main Content Area */}
       <div className="flex-grow flex flex-col">
-        <DashboardNav userRole={userRole} /> {/* Ensure consistency with userRole */}
+        {/* Dashboard Nav */}
+        <DashboardNav userRole={userRole} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
         {/* Main Content */}
         <div className="flex-grow p-6 space-y-6">
+          {/* Dashboard Header */}
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-semibold">Admin Dashboard</h1>
             {/* Profile Avatar */}

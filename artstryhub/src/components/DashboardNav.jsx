@@ -41,24 +41,9 @@ const DashboardNav = ({ userRole, isSidebarOpen, setIsSidebarOpen }) => {
         </h1>
       )}
 
-      {/* Search Bar */}
-      <div className="hidden md:flex items-center bg-gray-700 px-3 py-2 rounded-md">
-        <Search size={20} className="text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search..."
-          className="bg-transparent text-white outline-none ml-2 placeholder-gray-400"
-        />
-      </div>
-
-      {/* Notifications */}
-      <div className="relative hidden md:block">
-        <button className="relative flex items-center justify-center bg-gray-700 px-3 py-2 rounded-md hover:bg-gray-600">
-          <Bell size={20} />
-          <span className="absolute top-0 right-0 inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full">
-            5
-          </span>
-        </button>
+      {/* Search Bar (Mobile Responsive) */}
+      <div className="md:hidden">
+        <Search size={20} />
       </div>
 
       {/* Profile Dropdown */}
@@ -75,16 +60,10 @@ const DashboardNav = ({ userRole, isSidebarOpen, setIsSidebarOpen }) => {
             {userRole === 'artist' ? (
               <>
                 {/* Artist-specific dropdown items */}
-                <li
-                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                //   onClick={handleProfile}
-                >
+                <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
                   Profile
                 </li>
-                <li
-                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                //   onClick={handleSettings}
-                >
+                <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
                   Settings
                 </li>
                 <li
