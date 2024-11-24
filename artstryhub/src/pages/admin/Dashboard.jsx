@@ -1,178 +1,213 @@
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-  UserCircle,
-  Menu,
-  X,
-  Users,
-  Palette,
-  DollarSign,
-  TrendingUp,
-  Bell,
-  Settings,
-  Calendar,
-  HelpCircle
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { 
+  UserCircle, Menu, X, Users, DollarSign, Music2, 
+  TrendingUp, Activity, Calendar, Bell, Settings,
+  ChevronDown, Search, RefreshCw
 } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import DashboardNav from '../../components/DashboardNav';
 
 const AdminDashboard = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [notifications, setNotifications] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false); // Sidebar state (collapsed or expanded)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar toggle
+  const userRole = 'admin'; 
   const navigate = useNavigate();
-
   // Sample data for charts
-  const revenueData = [
-    { month: 'Jan', revenue: 5000 },
-    { month: 'Feb', revenue: 7000 },
-    { month: 'Mar', revenue: 6500 },
-    { month: 'Apr', revenue: 8000 },
-    { month: 'May', revenue: 9500 },
-    { month: 'Jun', revenue: 11000 },
-  ];
+const revenueData = [
+  { month: 'Jan', revenue: 4500, users: 1200 },
+  { month: 'Feb', revenue: 5200, users: 1400 },
+  { month: 'Mar', revenue: 6100, users: 1600 },
+  { month: 'Apr', revenue: 5800, users: 1550 },
+  { month: 'May', revenue: 7200, users: 1800 },
+  { month: 'Jun', revenue: 8400, users: 2100 }
+];
 
-  const stats = [
-    { title: 'Total Users', value: '12,345', icon: Users, change: '+12%' },
-    { title: 'Active Artists', value: '3,456', icon: Palette, change: '+8%' },
-    { title: 'Monthly Revenue', value: '$45,678', icon: DollarSign, change: '+15%' },
-    { title: 'Artwork Sales', value: '789', icon: TrendingUp, change: '+5%' },
-  ];
-
-  useEffect(() => {
-    // Simulate loading
-    setTimeout(() => {
-      setIsLoading(false);
-      // Simulate notifications
-      setNotifications([
-        { id: 1, message: 'New artist registration needs approval', type: 'warning' },
-        { id: 2, message: 'Monthly revenue report is ready', type: 'info' },
-      ]);
-    }, 1000);
-  }, []);
-
-  const StatCard = ({ stat }) => (
-    <Card className="hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-        <stat.icon className="h-4 w-4 text-gray-500" />
-      </CardHeader>
-      <CardContent>
-        <div className="text-2xl font-bold">{stat.value}</div>
-        <p className={`text-xs ${stat.change.startsWith('+') ? 'text-green-500' : 'text-red-500'}`}>
-          {stat.change} from last month
-        </p>
-      </CardContent>
-    </Card>
+const genreData = [
+  { genre: 'Pop', count: 450 },
+  { genre: 'Rock', count: 380 },
+  { genre: 'Jazz', count: 230 },
+  { genre: 'Hip Hop', count: 410 },
+  { genre: 'Classical', count: 180 }
+];
+const [isLoading, setIsLoading] = useState(false);
+const [notifications, setNotifications] = useState([]);
+const StatCard = ({ icon, label, value, trend }) => {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <div className="flex items-center justify-between">
+        <div className="p-3 rounded-full bg-blue-100">{icon}</div>
+        <span className={`text-sm ${trend >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+          {trend >= 0 ? '↑' : '↓'} {Math.abs(trend)}%
+        </span>
+      </div>
+      <h3 className="mt-4 text-lg font-semibold text-gray-700">{value}</h3>
+      <p className="text-gray-500">{label}</p>
+    </div>
   );
+};
+const refreshData = () => {
+  setIsLoading(true);
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 1000);
+};
 
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Mobile Sidebar Overlay */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
           onClick={() => setIsSidebarOpen(false)}
-        />
+        ></div>
       )}
 
       {/* Sidebar */}
       <Sidebar
+        userRole={userRole}
         isCollapsed={isCollapsed}
-        setIsCollapsed={setIsCollapsed}
         isSidebarOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
+        closeSidebar={() => setIsSidebarOpen(false)}
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-grow flex flex-col">
         {/* Dashboard Nav */}
-        <DashboardNav
-          onMenuClick={() => setIsSidebarOpen(true)}
-          notifications={notifications}
-        />
+        <DashboardNav userRole={userRole} isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-y-auto p-4">
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            {stats.map((stat, index) => (
-              <StatCard key={index} stat={stat} />
-            ))}
-          </div>
-
-          {/* Charts Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Revenue Overview</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={revenueData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line
-                        type="monotone"
-                        dataKey="revenue"
-                        stroke="#8884d8"
-                        strokeWidth={2}
-                        dot={{ r: 4 }}
-                        activeDot={{ r: 6 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Recent Activity */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Recent Activity</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {notifications.map((notification) => (
-                    <Alert key={notification.id} variant={notification.type === 'warning' ? 'destructive' : 'default'}>
-                      <AlertDescription>{notification.message}</AlertDescription>
-                    </Alert>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Quick Actions */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: Users, label: 'Manage Users' },
-              { icon: Settings, label: 'Settings' },
-              { icon: Calendar, label: 'Schedule' },
-              { icon: HelpCircle, label: 'Help' },
-            ].map((action, index) => (
-              <Card
-                key={index}
-                className="p-4 hover:bg-gray-50 cursor-pointer transition-colors duration-200"
-                onClick={() => navigate(`/admin/${action.label.toLowerCase()}`)}
+      {/* Main Content */}
+      <div className={`transition-all duration-300 ${isCollapsed ? 'ml-20' : 'ml-0'}`}>
+        {/* Header */}
+        <header className="bg-white shadow-sm">
+          <div className="flex items-center justify-between p-4">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsSidebarOpen(true)}
+                className="lg:hidden p-2 hover:bg-gray-100 rounded"
               >
-                <div className="flex flex-col items-center space-y-2">
-                  <action.icon className="h-6 w-6" />
-                  <span className="text-sm font-medium">{action.label}</span>
+              </button>
+              <h1 className="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
+            </div>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={refreshData}
+                className={`p-2 hover:bg-gray-100 rounded ${isLoading ? 'animate-spin' : ''}`}
+              >
+                <RefreshCw size={20} />
+              </button>
+              <div className="relative">
+                <Bell size={20} className="cursor-pointer" />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                  3
+                </span>
+              </div>
+              <UserCircle size={32} className="text-gray-600 cursor-pointer" />
+            </div>
+          </div>
+        </header>
+
+        {/* Dashboard Content */}
+        <main className="p-6">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <StatCard
+              icon={<Users size={24} className="text-blue-600" />}
+              label="Total Users"
+              value="8,249"
+              trend={12.5}
+            />
+            <StatCard
+              icon={<Music2 size={24} className="text-purple-600" />}
+              label="Active Artists"
+              value="1,234"
+              trend={8.2}
+            />
+            <StatCard
+              icon={<DollarSign size={24} className="text-green-600" />}
+              label="Total Revenue"
+              value="$45,678"
+              trend={15.8}
+            />
+            <StatCard
+              icon={<Activity size={24} className="text-orange-600" />}
+              label="Active Sessions"
+              value="456"
+              trend={-3.2}
+            />
+          </div>
+
+          {/* Charts */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold mb-4">Revenue & User Growth</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={revenueData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis yAxisId="left" />
+                  <YAxis yAxisId="right" orientation="right" />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    yAxisId="left"
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="#2563eb"
+                    strokeWidth={2}
+                  />
+                  <Line
+                    yAxisId="right"
+                    type="monotone"
+                    dataKey="users"
+                    stroke="#16a34a"
+                    strokeWidth={2}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-lg font-semibold mb-4">Popular Music Genres</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={genreData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="genre" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="count" fill="#8b5cf6" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* Recent Activity */}
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold">Recent Activity</h3>
+              <button className="text-blue-600 hover:text-blue-800">View All</button>
+            </div>
+            <div className="space-y-4">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors">
+                  <div className="p-2 rounded-full bg-blue-100">
+                    <Activity size={20} className="text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium">New artist registration</p>
+                    <p className="text-sm text-gray-500">2 minutes ago</p>
+                  </div>
                 </div>
-              </Card>
-            ))}
+              ))}
+            </div>
           </div>
         </main>
       </div>
-    </div>
+       </div>
+          </div>
+         
   );
 };
 
