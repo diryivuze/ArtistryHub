@@ -7,9 +7,8 @@ import DashboardNav from '../../components/DashboardNav';
 const AdminDashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false); // Sidebar state (collapsed or expanded)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar toggle
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // Profile menu toggle
-  const userRole = 'admin'; // Example role
-  const navigate = useNavigate(); // Navigation hook
+  const userRole = 'admin'; 
+  const navigate = useNavigate();
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -39,25 +38,7 @@ const AdminDashboard = () => {
           {/* Dashboard Header */}
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-semibold">Admin Dashboard</h1>
-            {/* Profile Avatar */}
-            <div className="relative">
-              <UserCircle
-                className="w-8 h-8 text-gray-700 cursor-pointer"
-                onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-              />
-              {/* Profile Menu */}
-              {isProfileMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md ring-1 ring-gray-100">
-                  <ul>
-                    <li className="px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer">Profile</li>
-                    <li className="px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer">Settings</li>
-                    <li className="px-4 py-2 text-gray-700 hover:bg-gray-200 cursor-pointer">Logout</li>
-                  </ul>
-                </div>
-              )}
             </div>
-          </div>
-
           {/* Dashboard Analytics/Graphs Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Placeholder for Analytics Cards */}
@@ -80,9 +61,9 @@ const AdminDashboard = () => {
             <h2 className="text-2xl font-semibold">Monthly Performance</h2>
             <div className="mt-4">Graph/Chart Placeholder</div>
           </div>
-        </div>
-      </div>
-    </div>
+          </div>
+          </div>
+          </div>
   );
 };
 

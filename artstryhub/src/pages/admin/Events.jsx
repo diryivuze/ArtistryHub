@@ -7,8 +7,7 @@ import DashboardNav from '../../components/DashboardNav';
 const AdminEvents = () => {
   const [isCollapsed, setIsCollapsed] = useState(false); // Sidebar state (collapsed or expanded)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Mobile sidebar toggle
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // Profile menu toggle
-  const userRole = 'Admin'; // Example role
+  const userRole = 'admin'; // Example role
   const navigate = useNavigate(); // Navigation hook
 
   return (
