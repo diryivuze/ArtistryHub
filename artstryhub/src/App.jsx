@@ -18,6 +18,7 @@ import ArtistEvents from './pages/Artist/Events';
 import ArtistProjects from './pages/Artist/Projects';
 import ArtistSettings from './pages/Artist/Settings';
 import Sidebar from "./components/Sidebar";
+import EventCard from "./components/EventCard";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/artist/events" element={<ArtistEvents />} />
         <Route path="/artist/projects" element={<ArtistProjects />} />
         <Route path="/artist/settings" element={<ArtistSettings />} />
+        <Route path="/event/cards" element={<EventCard />} />
       </Routes>
     </Router>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, UserCircle, ChevronDown, Bell, Search } from 'lucide-react';
+import { UserCircle, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const DashboardNav = ({ userRole, isSidebarOpen, setIsSidebarOpen }) => {
@@ -27,35 +27,29 @@ const DashboardNav = ({ userRole, isSidebarOpen, setIsSidebarOpen }) => {
   return (
     <div className="flex items-center justify-between p-4 bg-gray-800 text-white">
       {/* Mobile Menu Button */}
-      <button
-        className="md:hidden"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      >
-        <Menu size={24} />
-      </button>
 
       {/* Dashboard Title */}
       {!isCollapsed && (
         <h1 className="text-lg font-bold hidden md:block">
-          {userRole.charAt(0).toUpperCase() + userRole.slice(1)} Dashboard
+          {userRole ? (userRole.charAt(0).toUpperCase() + userRole.slice(1)) : 'Dashboard'}
         </h1>
       )}
 
-      {/* Search Bar (Mobile Responsive) */}
-      <div className="md:hidden">
-        <Search size={20} />
-      </div>
-
       {/* Profile Dropdown */}
-      <div className="relative group">
-        <button className="flex items-center space-x-2 bg-gray-700 px-3 py-2 rounded-md hover:bg-gray-600">
+      <div className="relative">
+        {/* Add the `group` class to the parent div for dropdown hover functionality */}
+        <button 
+          className="flex items-center space-x-2 bg-gray-700 px-3 py-2 rounded-md hover:bg-gray-600 group"
+        >
           <UserCircle size={20} />
-          {!isCollapsed && <span>{userRole.charAt(0).toUpperCase() + userRole.slice(1)}</span>}
+          {!isCollapsed && <span>{userRole ? (userRole.charAt(0).toUpperCase() + userRole.slice(1)) : 'User'}</span>}
           {!isCollapsed && <ChevronDown size={16} />}
         </button>
 
         {/* Dropdown Menu */}
-        <div className="absolute right-0 top-full mt-2 hidden group-hover:block bg-gray-800 border border-gray-700 rounded shadow-lg z-10">
+        <div 
+          className={`absolute right-0 top-full mt-2 bg-gray-800 border border-gray-700 rounded shadow-lg z-10 ${isCollapsed ? 'hidden' : ''}`}
+        >
           <ul className="text-sm">
             {userRole === 'artist' ? (
               <>

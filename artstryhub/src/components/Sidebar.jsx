@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Calendar, 
@@ -10,8 +10,7 @@ import {
   LogOut,
   ChevronLeft,
   Image,
-  UserCircle,
-  Bell
+  UserCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -30,13 +29,17 @@ const artistMenuItems = [
   { title: 'Settings', icon: Settings, path: '/artist/settings' },
 ];
 
-const Sidebar = ({userRole}) => {
+const Sidebar = ({ userRole }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const menuItems = userRole == 'Admin' ? adminMenuItems : artistMenuItems;
- 
+  const menuItems = userRole === 'admin' ? adminMenuItems : artistMenuItems;
+
+  const handleLogout = () => {
+    navigate('/login'); // Navigate to the login page
+  };
 
   const handleMouseEnter = () => {
     if (isCollapsed) {
@@ -82,13 +85,15 @@ const Sidebar = ({userRole}) => {
         {!isCollapsed && (
           <div className="text-center">
             <h3 className="font-semibold">Patrick Nayituriki</h3>
-            <p className="text-xs text-gray-400">{userRole.charAt(0).toUpperCase() + userRole.slice(1)}</p>
+            <p className="text-xs text-gray-400">
+              {userRole ? (userRole.charAt(0).toUpperCase() + userRole.slice(1)) : 'User Role'}
+            </p>
           </div>
         )}
       </div>
 
       {/* Navigation Menu */}
-      <div className="flex-grow overflow-y-auto">
+      <div className="flex-grow overflow-hidden">
         <ul className="py-4">
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -107,7 +112,7 @@ const Sidebar = ({userRole}) => {
                   } transition-colors relative group`}
                 >
                   <item.icon size={25} />
-                  {(!isCollapsed) && (
+                  {!isCollapsed && (
                     <span className="transition-opacity duration-200">
                       {item.title}
                     </span>
@@ -125,12 +130,14 @@ const Sidebar = ({userRole}) => {
         </ul>
       </div>
 
-
       {/* Logout Section */}
       <div className="p-4 border-t border-gray-800">
-        <button className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 p-2 rounded-lg transition-colors">
+        <button
+          onClick={handleLogout} // On click, trigger the navigation to /login
+          className="w-full flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 p-2 rounded-lg transition-colors"
+        >
           <LogOut size={25} />
-          {(!isCollapsed ) && <span>Logout</span>}
+          {!isCollapsed && <span>Logout</span>}
         </button>
       </div>
     </motion.div>
