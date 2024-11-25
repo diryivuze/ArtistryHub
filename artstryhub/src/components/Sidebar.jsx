@@ -20,6 +20,7 @@ const adminMenuItems = [
   { title: 'Artists', icon: Users, path: '/admin/artists' },
   { title: 'Feedback', icon: MessageSquare, path: '/admin/feedback' },
   { title: 'Mentorship', icon: User, path: '/admin/mentorship' },
+  { title: 'Schedules', icon: User, path: '/admin/schedules' },
 ];
 
 const artistMenuItems = [

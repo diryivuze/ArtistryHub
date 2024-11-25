@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { 
-  UserCircle, Menu, X, Users, DollarSign, Music2, 
-  TrendingUp, Activity, Calendar, Bell, Settings,
-  ChevronDown, Search, RefreshCw
+  UserCircle, Users, DollarSign, Music2,  Activity,  Bell,RefreshCw
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
@@ -89,23 +87,9 @@ const refreshData = () => {
                 className="lg:hidden p-2 hover:bg-gray-100 rounded"
               >
               </button>
-              <h1 className="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
+              <h1 className="text-2xl font-bold text-gray-800">Overview</h1>
             </div>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={refreshData}
-                className={`p-2 hover:bg-gray-100 rounded ${isLoading ? 'animate-spin' : ''}`}
-              >
-                <RefreshCw size={20} />
-              </button>
-              <div className="relative">
-                <Bell size={20} className="cursor-pointer" />
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                  3
-                </span>
-              </div>
-              <UserCircle size={32} className="text-gray-600 cursor-pointer" />
-            </div>
+
           </div>
         </header>
 
