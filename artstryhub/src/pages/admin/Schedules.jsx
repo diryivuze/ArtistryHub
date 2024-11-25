@@ -16,59 +16,51 @@ const AdminSchedule = () => {
   const navigate = useNavigate(); // Navigation hook
 
   useEffect(() => {
-    // Load data from localStorage when the component mounts
-    const storedData = JSON.parse(localStorage.getItem('scheduleData'));
-    
-    // If no data exists in localStorage, set some sample data
-    if (!storedData || storedData.length === 0) {
-      const sampleData = [
-        {
-          id: 1,
-          name: 'Artist 1',
-          subject: 'Project A',
-          date: '2024-12-01',
-          time: '10:00',
-          status: 'Scheduled',
-        },
-        {
-          id: 2,
-          name: 'Artist 2',
-          subject: 'Project B',
-          date: '2024-12-02',
-          time: '11:00',
-          status: 'Scheduled',
-        },
-        {
-          id: 3,
-          name: 'Artist 3',
-          subject: 'Project C',
-          date: '2024-12-03',
-          time: '14:00',
-          status: 'Scheduled',
-        },
-        {
-          id: 4,
-          name: 'Artist 4',
-          subject: 'Project D',
-          date: '2024-12-04',
-          time: '09:00',
-          status: 'Scheduled',
-        },
-        {
-          id: 5,
-          name: 'Artist 5',
-          subject: 'Project E',
-          date: '2024-12-05',
-          time: '16:00',
-          status: 'Scheduled',
-        },
-      ];
+    // Sample data for mentorship schedules
+    const sampleData = [
+      {
+        id: 1,
+        name: 'Loue Sauveur Christian',
+        subject: 'Digital Art & Illustration',
+        date: '2024-12-01',
+        time: '10:00',
+        status: 'Scheduled',
+      },
+      {
+        id: 2,
+        name: 'Daniel Iryivuze',
+        subject: 'Sculpture Techniques & Materials',
+        date: '2024-12-02',
+        time: '11:00',
+        status: 'Scheduled',
+      },
+      {
+        id: 3,
+        name: 'Pendo Vestine',
+        subject: 'Painting Styles & Techniques',
+        date: '2024-12-03',
+        time: '14:00',
+        status: 'Scheduled',
+      },
+      {
+        id: 4,
+        name: 'Vanessa Uwonkunda',
+        subject: 'Digital Art Creation & Concept Design',
+        date: '2024-12-04',
+        time: '09:00',
+        status: 'Scheduled',
+      },
+      {
+        id: 5,
+        name: 'Alain Michael',
+        subject: '3D Modeling & Animation',
+        date: '2024-12-05',
+        time: '16:00',
+        status: 'Scheduled',
+      },
+    ];
 
-      localStorage.setItem('scheduleData', JSON.stringify(sampleData)); // Save to localStorage
-      setData(sampleData); // Set state with sample data
-    } else {
-      setData(storedData); // Use existing data from localStorage
-    }
+    setData(sampleData); // Set state with sample data
   }, []);
 
   const itemsPerPage = 5; // Items per page for pagination
@@ -94,8 +86,7 @@ const AdminSchedule = () => {
 
   const handleDelete = (id) => {
     const updatedData = data.filter(item => item.id !== id); // Remove the selected item
-    setData(updatedData);
-    localStorage.setItem('scheduleData', JSON.stringify(updatedData)); // Save to localStorage
+    setData(updatedData); // Update state with the new data
     closeEditModal(); // Close modal after deletion
   };
 
@@ -103,8 +94,7 @@ const AdminSchedule = () => {
     const updatedData = data.map(item =>
       item.id === editSchedule.id ? editSchedule : item
     );
-    setData(updatedData);
-    localStorage.setItem('scheduleData', JSON.stringify(updatedData)); // Save to localStorage
+    setData(updatedData); // Update state with the new data
     closeEditModal(); // Close modal after saving
   };
 

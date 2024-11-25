@@ -82,7 +82,7 @@ const Events = () => {
               className="transition-transform"
             >
               <div
-                className="cursor-pointer bg-gradient-to-r from-blue-950 to-red-500 shadow-lg hover:shadow-lg transition-shadow transform hover:scale-105 hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-lg overflow-hidden"
+                className="cursor-pointer bg-red-500 shadow-lg hover:shadow-lg transition-shadow transform hover:scale-105 hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-lg overflow-hidden"
                 onClick={() => setSelectedEvent(event)}
               >
                 <div className="relative">
