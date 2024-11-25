@@ -37,14 +37,14 @@ const ArtistDashboard = () => {
   const statsCards = [
     { title: 'Total Artworks', value: '38', icon: Palette, color: 'bg-red-500' },
     { title: 'Events Joined', value: '12', icon: Calendar, color: 'bg-purple-500' },
-    { title: 'Total Views', value: '1.2K', icon: Users, color: 'bg-green-500' },
+    { title: 'Total Views', value: '130', icon: Users, color: 'bg-green-500' },
     { title: 'Average Rating', value: '4.8', icon: Star, color: 'bg-yellow-500' }
   ];
 
   const recentActivities = [
-    { type: 'upload', message: 'New artwork "Abstract Dreams" uploaded', time: '2h ago' },
-    { type: 'event', message: 'Joined Digital Art Workshop', time: '1d ago' },
-    { type: 'feedback', message: 'Received feedback on "Nature Study"', time: '2d ago' }
+    { type: 'upload', message: 'New artwork "Digital Art Exhibition 2024" uploaded', time: '4h ago' },
+    { type: 'event', message: 'Joined Traditional Painting Workshop', time: '1d ago' },
+    { type: 'feedback', message: 'Received feedback on "Abstract Landscape"', time: '2d ago' }
   ];
 
   return (
@@ -61,16 +61,8 @@ const ArtistDashboard = () => {
         <div className="flex-1 overflow-y-auto p-6">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Artist Dashboard</h1>
-            <div className="flex gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg"
-              >
-                <TrendingUp size={16} />
-                <span>View Analytics</span>
-              </motion.button>
-            </div>
+            <h1 className="text-3xl font-bold text-gray-800">Artist Overwiew</h1>
+
           </div>
 
           {/* Stats Cards */}
@@ -163,7 +155,7 @@ const ArtistDashboard = () => {
               <Award className="w-6 h-6 text-yellow-500" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {['Best Digital Artist', 'Event Winner', '1000 Views'].map((achievement, index) => (
+              {['Best Digital Artist', 'Event Winner', '100 Views'].map((achievement, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.02 }}

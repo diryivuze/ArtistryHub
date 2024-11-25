@@ -15,20 +15,16 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   // Sample data for charts
 const revenueData = [
-  { month: 'Jan', revenue: 4500, users: 1200 },
-  { month: 'Feb', revenue: 5200, users: 1400 },
-  { month: 'Mar', revenue: 6100, users: 1600 },
-  { month: 'Apr', revenue: 5800, users: 1550 },
-  { month: 'May', revenue: 7200, users: 1800 },
-  { month: 'Jun', revenue: 8400, users: 2100 }
+  { month: 'Sept', revenue: 400, users: 4 },
+  { month: 'Oct', revenue: 500, users: 10 },
+  { month: 'Nov', revenue: 600, users: 16 }
 ];
 
 const genreData = [
-  { genre: 'Pop', count: 450 },
-  { genre: 'Rock', count: 380 },
-  { genre: 'Jazz', count: 230 },
-  { genre: 'Hip Hop', count: 410 },
-  { genre: 'Classical', count: 180 }
+  { genre: 'Painting', count: 40 },
+  { genre: 'Digital Art', count: 80 },
+  { genre: 'Photograhy', count: 30 },
+  { genre: 'Sclupture', count: 50 }
 ];
 const [isLoading, setIsLoading] = useState(false);
 const [notifications, setNotifications] = useState([]);
@@ -100,25 +96,25 @@ const refreshData = () => {
             <StatCard
               icon={<Users size={24} className="text-blue-600" />}
               label="Total Users"
-              value="8,249"
+              value="200"
               trend={12.5}
             />
             <StatCard
               icon={<Music2 size={24} className="text-purple-600" />}
               label="Active Artists"
-              value="1,234"
+              value="193"
               trend={8.2}
             />
             <StatCard
               icon={<DollarSign size={24} className="text-green-600" />}
               label="Total Revenue"
-              value="$45,678"
+              value="$1,000"
               trend={15.8}
             />
             <StatCard
               icon={<Activity size={24} className="text-orange-600" />}
               label="Active Sessions"
-              value="456"
+              value="4"
               trend={-3.2}
             />
           </div>
@@ -174,7 +170,7 @@ const refreshData = () => {
               <button className="text-blue-600 hover:text-blue-800">View All</button>
             </div>
             <div className="space-y-4">
-              {[1, 2, 3].map((item) => (
+              {[1].map((item) => (
                 <div key={item} className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors">
                   <div className="p-2 rounded-full bg-blue-100">
                     <Activity size={20} className="text-blue-600" />
